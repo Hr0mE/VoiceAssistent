@@ -11,10 +11,11 @@ import winsound
 def listen_comand(): #main func
     try:
         print("\nЖду команды...\n")
-        return online_listener()
+        return offline_listener()
+        #return online_listener()
     
     except s_r.UnknownValueError:
-        return 'Какая-то ошибка, попробуй повторить команду'
+        return 'ERROR: Какая-то ошибка, попробуй повторить команду'
     
     except s_r.RequestError:
         online_to_offline_sound()
@@ -48,7 +49,7 @@ def offline_listener():
                     query += ' ' + i
                 return query.replace('"','')
     except:
-        return 'Что-то не так, проверь offline_listener'
+        return 'ERROR: Проверь offline_listener в Recognizer_VA'
 
 
 def start_sound(): #Activating comand sound
