@@ -1,20 +1,22 @@
 import CL_music_VA as muslist
 import CL_openclose_VA as openclose
+import threading
 
 
 #pattern for adding new comand       '': ['','','',''],
 def comands_analis_dict():
     c_a_d = { 
-    'music': ['включи','запусти','включить','запустить','рок','чирок','музыку','музыка','дискотека'],
+    'music_on': ['включи','запусти','включить','запустить','рок','чирок','музыку','музыка','дискотека'],
+    'music_off': ['выключи', 'останови', 'выключить','остановить'],
     'open_close': ['открой','открыть','закрой','закрыть', 'активировать','активация', 'обновить','обнови','перезапустить','перезапусти'],
     }
     return c_a_d
 
 def comands_dict():
     comands_dict = {
-        'music': {
+        'music_on': {
             'play_rock': ['рок', 'рок-н-ролл', 'рак'],
-            'play_all': ['музыку', 'музыку в студию', 'танцы до упаду','музыка'],
+            'play_all': ['музыку', 'в студию', 'танцы до упаду'],
             'play_collection': ['сборник','давай что-нибудь длинное'],
             'play_classic': ['классику','классика'],
             'play_atl': ['aиста','аист','atl','пл',],
@@ -32,15 +34,21 @@ def comands_dict():
             'start_and_close_notepad': ['блокнот','добавить заметку','заметка','записная книжка'],
             'open_code': ['свой код', 'код','яви свою суть','кот','свой кот'],
             'open_desktop': ["рабочий стол"],
-            }
+            },
+        'music_off':{
+            'playlist_off': ['музыку','плейлист','музыка'],
+            },
         }
     return comands_dict
 
-def music(song):
-    return muslist.globa(song)
+def music_on(func):
+    muslist.globa(func)
 
-def open_close(action):
-    return openclose.globa(action)
+def music_off(func):
+    return muslist.globa(func)
 
-def globa(command, action):
-    return globals()[command](action)
+def open_close(func):
+    return openclose.globa(func)
+
+def globa(func, argument):
+    return globals()[func](argument)

@@ -1,7 +1,7 @@
 from vosk import Model, KaldiRecognizer
 import speech_recognition as s_r
-import pyaudio
 import wave
+import pyaudio
 import idelib
 import json
 import winsound

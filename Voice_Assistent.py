@@ -2,7 +2,7 @@ import Comands_list_VA as C_l #lib with comands #in "C_l" l is small letter L
 import Recognizer_VA as R_VA #lib Speach-to-text
 import time
 import keyboard
-
+import threading
         
 def activating(query):
     try:
@@ -26,12 +26,21 @@ def main():
     #print(f"'{query}'" + ',') #Useful for adding new words in comands dict
     query = input('command: ')
     print(f'Исполняется команда "{query}"\n')
+    #t = threading.Thread(target=activating(query))
+    #t.start()
     activating(query)
-            
+    
 def start():
+    print('pressed insert ')
     if __name__ == '__main__':
         main()
-
+        """
+        time.sleep(10)
+        print('time`s up')
+        main()
+        """
+    else:
+        print('not Main')
 
 keyboard.add_hotkey('insert', lambda: start())
 keyboard.wait()
